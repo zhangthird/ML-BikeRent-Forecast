@@ -491,7 +491,7 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
                 predictions = scaler_cnt.inverse_transform(predictions)
                 true = scaler_cnt.inverse_transform(true)
                 # 绘制时传入真实输入序列 input_cnt
-                plot_predictions(input_cnt[0], true[0], predictions[0],
+                plot_predictions(input_cnt[1], true[1], predictions[1],
                                  f'Experiment {exp + 1} - {prediction_type.capitalize()} Predictions vs Ground Truth',
                                  scaler_cnt)
 
