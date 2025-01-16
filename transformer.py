@@ -432,7 +432,7 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
         for exp in range(start_exp, num_experiments):
             config = exp_configs[exp]
             print(f"\nExperiment {exp + 1}/{num_experiments} - {config['description']}")
-            print(f"Learning rate: {config['lr']}, Patience: {config['patience']}, Factor: {config['factor']}")
+            print(f"Learning rate: {config['lr']}, Learning rate: {config['lr']}, Warmup epochs: {config['warmup_epochs']}, Min lr: {config['min_lr']}")
             
             set_seed(42 + exp)
             
