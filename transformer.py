@@ -208,10 +208,9 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs, s
             train_losses.append(avg_train_loss)
             val_losses.append(avg_val_loss)
 
-            # 移除scheduler相关代码
-            if epoch % 10 == 0:  # 每10个epoch打印一次当前学习率
-                current_lr = optimizer.param_groups[0]['lr']
-                print(f'Current learning rate: {current_lr:.6f} in epoch {epoch + 1}')
+            # 简化学习率打印
+            if epoch % 10 == 0:
+                print(f'Learning rate: 0.001 (固定) - Epoch {epoch + 1}')
 
             # 保存最佳模型
             if avg_val_loss < best_val_loss:
@@ -323,28 +322,12 @@ def plot_predictions(input_seq, true_seq, pred_seq, title, scaler_cnt):
 
 
 # 封装实验流程
-# 修改exp_configs配置，所有实验使用相同的学习率
+# 修改exp_configs，添加不同的随机种子
 exp_configs = [
     {
-        'lr': 0.001,
-        'description': 'Constant LR - Run 1'
-    },
-    {
-        'lr': 0.001,
-        'description': 'Constant LR - Run 2'
-    },
-    {
-        'lr': 0.001,
-        'description': 'Constant LR - Run 3'
-    },
-    {
-        'lr': 0.001,
-        'description': 'Constant LR - Run 4'
-    },
-    {
-        'lr': 0.001,
-        'description': 'Constant LR - Run 5'
-    }
+        'description': f'固定学习率(0.001) - 随机种子 {seed}',
+        'seed': seed
+    } for seed in [42, 123, 456, 789, 1024]  # 使用不同的随机种子
 ]
 
 def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, target, prediction_type, input_window,
@@ -377,17 +360,16 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
         for exp in range(start_exp, num_experiments):
             config = exp_configs[exp]
             print(f"\nExperiment {exp + 1}/{num_experiments} - {config['description']}")
-            print(f"Learning rate: {config['lr']}")
+            print(f"Random seed: {config['seed']}")
             
-            set_seed(42 + exp)
+            # 使用配置中的随机种子
+            set_seed(config['seed'])
             
             model = TransformerTimeSeries(feature_size=len(features), nhead=4).to(device)
             
             criterion = nn.MSELoss()
-            optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'])
-            
-            # 移除scheduler相关代码，使用恒定学习率
-            scheduler = None
+            # 使用固定学习率
+            optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
             
             # 定义模型保存路径，保存在 "saved_models" 文件夹
             save_path = os.path.join('saved_models', f'transformer_model_{prediction_type}_exp{exp + 1}.pth')
@@ -400,7 +382,7 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
             # 使用训练和验证集进行训练
             train_losses, val_losses = train_model(
                 model, train_loader, val_loader, criterion,
-                optimizer, epochs, save_path, scheduler,
+                optimizer, epochs, save_path, scheduler=None,  # 移除scheduler
                 checkpoint_dir='checkpoints', exp_id=exp + 1
             )
 
