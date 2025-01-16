@@ -208,9 +208,9 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs, s
             train_losses.append(avg_train_loss)
             val_losses.append(avg_val_loss)
 
-            # 更新学习率调度器
-            if scheduler:
-                current_lr = scheduler.step()
+            # 移除scheduler相关代码
+            if epoch % 10 == 0:  # 每10个epoch打印一次当前学习率
+                current_lr = optimizer.param_groups[0]['lr']
                 print(f'Current learning rate: {current_lr:.6f} in epoch {epoch + 1}')
 
             # 保存最佳模型
@@ -323,82 +323,27 @@ def plot_predictions(input_seq, true_seq, pred_seq, title, scaler_cnt):
 
 
 # 封装实验流程
-class WarmupCosineSchedule:
-    def __init__(self, optimizer, warmup_steps, total_steps, min_lr=1e-6):
-        self.optimizer = optimizer
-        self.warmup_steps = warmup_steps
-        self.total_steps = total_steps
-        self.min_lr = min_lr
-        self.current_step = 0
-        self.base_lr = optimizer.param_groups[0]['lr']
-        
-    def step(self):
-        self.current_step += 1
-        if self.current_step < self.warmup_steps:
-            # 预热阶段：线性增加
-            lr = self.base_lr * (self.current_step / self.warmup_steps)
-        else:
-            # 余弦退火阶段
-            progress = (self.current_step - self.warmup_steps) / (self.total_steps - self.warmup_steps)
-            lr = self.min_lr + 0.5 * (self.base_lr - self.min_lr) * (1 + np.cos(progress * np.pi))
-        
-        for param_group in self.optimizer.param_groups:
-            param_group['lr'] = lr
-        
-        return lr
-    
-    def get_last_lr(self):
-        return [self.optimizer.param_groups[0]['lr']]
-
-    def state_dict(self):
-        """返回调度器的状态"""
-        return {
-            'current_step': self.current_step,
-            'warmup_steps': self.warmup_steps,
-            'total_steps': self.total_steps,
-            'min_lr': self.min_lr,
-            'base_lr': self.base_lr
-        }
-    
-    def load_state_dict(self, state_dict):
-        """加载调度器的状态"""
-        self.current_step = state_dict['current_step']
-        self.warmup_steps = state_dict['warmup_steps']
-        self.total_steps = state_dict['total_epochs']
-        self.min_lr = state_dict['min_lr']
-        self.base_lr = state_dict['base_lr']
-
-# 修改exp_configs配置
+# 修改exp_configs配置，所有实验使用相同的学习率
 exp_configs = [
     {
         'lr': 0.001,
-        'warmup_epochs': 5,
-        'min_lr': 1e-6,
-        'description': 'Standard-快速预热(5轮)+适中学习率(1e-3)'
-    },
-    {
-        'lr': 0.0005,
-        'warmup_epochs': 10,
-        'min_lr': 1e-6,
-        'description': 'Conservative-缓慢预热(10轮)+保守学习率(5e-4)'
-    },
-    {
-        'lr': 0.002,
-        'warmup_epochs': 3,
-        'min_lr': 1e-5,
-        'description': 'Aggressive-快速预热(3轮)+激进学习率(2e-3)'
-    },
-    {
-        'lr': 0.0003,
-        'warmup_epochs': 15,
-        'min_lr': 1e-7,
-        'description': 'Ultra-Conservative-超长预热(15轮)+极保守学习率(3e-4)'
+        'description': 'Constant LR - Run 1'
     },
     {
         'lr': 0.001,
-        'warmup_epochs': 8,
-        'min_lr': 5e-6,
-        'description': 'Balanced-中等预热(8轮)+平衡学习率(1e-3)'
+        'description': 'Constant LR - Run 2'
+    },
+    {
+        'lr': 0.001,
+        'description': 'Constant LR - Run 3'
+    },
+    {
+        'lr': 0.001,
+        'description': 'Constant LR - Run 4'
+    },
+    {
+        'lr': 0.001,
+        'description': 'Constant LR - Run 5'
     }
 ]
 
@@ -432,7 +377,7 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
         for exp in range(start_exp, num_experiments):
             config = exp_configs[exp]
             print(f"\nExperiment {exp + 1}/{num_experiments} - {config['description']}")
-            print(f"Learning rate: {config['lr']}, Warmup epochs: {config['warmup_epochs']}, Min lr: {config['min_lr']}")
+            print(f"Learning rate: {config['lr']}")
             
             set_seed(42 + exp)
             
@@ -441,17 +386,8 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
             criterion = nn.MSELoss()
             optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'])
             
-            # 计算总步数和预热步数
-            total_steps = epochs * len(train_loader)
-            warmup_steps = config['warmup_epochs'] * len(train_loader)
-            
-            # 使用新的学习率调度器
-            scheduler = WarmupCosineSchedule(
-                optimizer,
-                warmup_steps=warmup_steps,
-                total_steps=total_steps,
-                min_lr=config['min_lr']
-            )
+            # 移除scheduler相关代码，使用恒定学习率
+            scheduler = None
             
             # 定义模型保存路径，保存在 "saved_models" 文件夹
             save_path = os.path.join('saved_models', f'transformer_model_{prediction_type}_exp{exp + 1}.pth')
