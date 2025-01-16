@@ -353,18 +353,18 @@ class WarmupCosineSchedule:
     def state_dict(self):
         """返回调度器的状态"""
         return {
-            'current_epoch': self.current_epoch,
-            'warmup_epochs': self.warmup_epochs,
-            'total_epochs': self.total_epochs,
+            'current_step': self.current_step,
+            'warmup_steps': self.warmup_steps,
+            'total_steps': self.total_steps,
             'min_lr': self.min_lr,
             'base_lr': self.base_lr
         }
     
     def load_state_dict(self, state_dict):
         """加载调度器的状态"""
-        self.current_epoch = state_dict['current_epoch']
-        self.warmup_epochs = state_dict['warmup_epochs']
-        self.total_epochs = state_dict['total_epochs']
+        self.current_step = state_dict['current_step']
+        self.warmup_steps = state_dict['warmup_steps']
+        self.total_steps = state_dict['total_epochs']
         self.min_lr = state_dict['min_lr']
         self.base_lr = state_dict['base_lr']
 
