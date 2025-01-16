@@ -226,7 +226,7 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs, s
                     'epoch': epoch,
                     'model_state_dict': model.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
-                    'scheduler_state_dict': scheduler.state_dict() if scheduler else None,
+                    'scheduler_state_dict': scheduler.state_dict() if hasattr(scheduler, 'state_dict') else None,
                     'train_losses': train_losses,
                     'val_losses': val_losses,
                     'best_val_loss': best_val_loss
@@ -240,7 +240,7 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs, s
                     'epoch': epoch,
                     'model_state_dict': model.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
-                    'scheduler_state_dict': scheduler.state_dict() if scheduler else None,
+                    'scheduler_state_dict': scheduler.state_dict() if hasattr(scheduler, 'state_dict') else None,
                     'train_losses': train_losses,
                     'val_losses': val_losses,
                     'best_val_loss': best_val_loss
@@ -349,6 +349,24 @@ class WarmupCosineSchedule:
     
     def get_last_lr(self):
         return [self.optimizer.param_groups[0]['lr']]
+
+    def state_dict(self):
+        """返回调度器的状态"""
+        return {
+            'current_epoch': self.current_epoch,
+            'warmup_epochs': self.warmup_epochs,
+            'total_epochs': self.total_epochs,
+            'min_lr': self.min_lr,
+            'base_lr': self.base_lr
+        }
+    
+    def load_state_dict(self, state_dict):
+        """加载调度器的状态"""
+        self.current_epoch = state_dict['current_epoch']
+        self.warmup_epochs = state_dict['warmup_epochs']
+        self.total_epochs = state_dict['total_epochs']
+        self.min_lr = state_dict['min_lr']
+        self.base_lr = state_dict['base_lr']
 
 # 修改exp_configs配置
 exp_configs = [
