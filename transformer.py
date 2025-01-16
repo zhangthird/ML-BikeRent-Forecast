@@ -113,26 +113,41 @@ class BikeDataset(Dataset):
 
 # 定义Transformer模型
 class TransformerTimeSeries(nn.Module):
-    def __init__(self, feature_size=12, num_layers=3, dropout=0.1, forward_expansion=2048, nhead=4):  # 修改nhead为4
-        # 验证feature_size是否能被nhead整除
-        assert feature_size % nhead == 0, f"feature_size ({feature_size}) must be divisible by nhead ({nhead})"
+    def __init__(self, feature_size=12, num_layers=3, dropout=0.1, forward_expansion=2048, nhead=4, 
+                 input_window=96, output_window=96):
         super(TransformerTimeSeries, self).__init__()
         self.model_type = 'Transformer'
+        self.input_window = input_window
+        self.output_window = output_window
+        
+        # 验证feature_size是否能被nhead整除
+        assert feature_size % nhead == 0, f"feature_size ({feature_size}) must be divisible by nhead ({nhead})"
+        
         self.src_mask = None
         self.pos_encoder = PositionalEncoding(feature_size, dropout)
         # 设置 batch_first=True 以解决警告
         encoder_layers = nn.TransformerEncoderLayer(d_model=feature_size, nhead=nhead,
-                                                    dim_feedforward=forward_expansion, dropout=dropout,
-                                                    batch_first=True)
+                                                  dim_feedforward=forward_expansion, dropout=dropout,
+                                                  batch_first=True)
         self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_layers=num_layers)
+        
+        # 添加一个线性插值层来调整输出大小
+        self.output_projection = nn.Linear(input_window, output_window)
         self.decoder = nn.Linear(feature_size, 1)
 
     def forward(self, src):
-        # src shape: (batch_size, seq_len, feature_size)
-        src = self.pos_encoder(src)  # 添加位置编码
-        output = self.transformer_encoder(src)  # (batch_size, seq_len, feature_size)
-        output = self.decoder(output)  # (batch_size, seq_len, 1)
-        return output.squeeze(-1)  # (batch_size, seq_len)
+        # src shape: (batch_size, input_window, feature_size)
+        src = self.pos_encoder(src)
+        output = self.transformer_encoder(src)  # (batch_size, input_window, feature_size)
+        output = self.decoder(output)  # (batch_size, input_window, 1)
+        output = output.squeeze(-1)  # (batch_size, input_window)
+        
+        # 调整输出序列长度以匹配目标长度
+        output = output.transpose(1, 0)  # (input_window, batch_size)
+        output = self.output_projection(output)  # (output_window, batch_size)
+        output = output.transpose(1, 0)  # (batch_size, output_window)
+        
+        return output
 
 
 class PositionalEncoding(nn.Module):
@@ -365,7 +380,16 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
             # 使用配置中的随机种子
             set_seed(config['seed'])
             
-            model = TransformerTimeSeries(feature_size=len(features), nhead=4).to(device)
+            # 修改这里的模型初始化
+            model = TransformerTimeSeries(
+                feature_size=len(features),
+                num_layers=3,
+                dropout=0.1,
+                forward_expansion=2048,
+                nhead=4,
+                input_window=input_window,
+                output_window=output_window
+            ).to(device)
             
             criterion = nn.MSELoss()
             # 使用固定学习率
