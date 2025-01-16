@@ -210,9 +210,8 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs, s
 
             # 更新学习率调度器
             if scheduler:
-                scheduler.step(avg_val_loss)
-                current_lr = scheduler.get_last_lr()[0]
-                print(f'Current learning rate: {current_lr} in epoch {epoch + 1}')
+                current_lr = scheduler.step()
+                print(f'Current learning rate: {current_lr:.6f} in epoch {epoch + 1}')
 
             # 保存最佳模型
             if avg_val_loss < best_val_loss:
@@ -311,7 +310,7 @@ def plot_predictions(input_seq, true_seq, pred_seq, title, scaler_cnt):
     input_seq_extended = np.concatenate([input_seq, [true_seq[0]]])  # 将第一个真实值添加到输入序列中
     plt.plot(time_input, input_seq_extended, label='Input (前一个时间步 cnt)', color='gray')
 
-    # 反标准化真实值、预测值在外部已完成，这里只��责绘图
+    # 反标准化真实值、预测值在外部已完成，这里只负责绘图
     plt.plot(time_output, true_seq, label='True', color='blue')
     plt.plot(time_output, pred_seq, label='Predicted', color='red')
 
@@ -324,6 +323,67 @@ def plot_predictions(input_seq, true_seq, pred_seq, title, scaler_cnt):
 
 
 # 封装实验流程
+class WarmupCosineSchedule:
+    def __init__(self, optimizer, warmup_steps, total_steps, min_lr=1e-6):
+        self.optimizer = optimizer
+        self.warmup_steps = warmup_steps
+        self.total_steps = total_steps
+        self.min_lr = min_lr
+        self.current_step = 0
+        self.base_lr = optimizer.param_groups[0]['lr']
+        
+    def step(self):
+        self.current_step += 1
+        if self.current_step < self.warmup_steps:
+            # 预热阶段：线性增加
+            lr = self.base_lr * (self.current_step / self.warmup_steps)
+        else:
+            # 余弦退火阶段
+            progress = (self.current_step - self.warmup_steps) / (self.total_steps - self.warmup_steps)
+            lr = self.min_lr + 0.5 * (self.base_lr - self.min_lr) * (1 + np.cos(progress * np.pi))
+        
+        for param_group in self.optimizer.param_groups:
+            param_group['lr'] = lr
+        
+        return lr
+    
+    def get_last_lr(self):
+        return [self.optimizer.param_groups[0]['lr']]
+
+# 修改exp_configs配置
+exp_configs = [
+    {
+        'lr': 0.001,
+        'warmup_epochs': 5,
+        'min_lr': 1e-6,
+        'description': 'Standard-快速预热(5轮)+适中学习率(1e-3)'
+    },
+    {
+        'lr': 0.0005,
+        'warmup_epochs': 10,
+        'min_lr': 1e-6,
+        'description': 'Conservative-缓慢预热(10轮)+保守学习率(5e-4)'
+    },
+    {
+        'lr': 0.002,
+        'warmup_epochs': 3,
+        'min_lr': 1e-5,
+        'description': 'Aggressive-快速预热(3轮)+激进学习率(2e-3)'
+    },
+    {
+        'lr': 0.0003,
+        'warmup_epochs': 15,
+        'min_lr': 1e-7,
+        'description': 'Ultra-Conservative-超长预热(15轮)+极保守学习率(3e-4)'
+    },
+    {
+        'lr': 0.001,
+        'warmup_epochs': 8,
+        'min_lr': 5e-6,
+        'description': 'Balanced-中等预热(8轮)+平衡学习率(1e-3)'
+    }
+]
+
 def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, target, prediction_type, input_window,
                    output_window, num_experiments=5, epochs=10, resume=False):  # 新增 resume 参数
 
@@ -350,40 +410,6 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
     mse_list = []
     mae_list = []
 
-    # 为不同实验定义不同的学习率配置
-    exp_configs = [
-        {
-            'lr': 0.01,
-            'patience': 10,
-            'factor': 0.1,
-            'description': '高学习率快速收敛'
-        },
-        {
-            'lr': 0.001,
-            'patience': 15,
-            'factor': 0.2,
-            'description': '中等学习率平稳训练'
-        },
-        {
-            'lr': 0.0001,
-            'patience': 20,
-            'factor': 0.5,
-            'description': '低学习率细致调优'
-        },
-        {
-            'lr': 0.005,
-            'patience': 12,
-            'factor': 0.15,
-            'description': '折中方案'
-        },
-        {
-            'lr': 0.0005,
-            'patience': 18,
-            'factor': 0.3,
-            'description': '保守方案'
-        }
-    ]
-
     try:
         for exp in range(start_exp, num_experiments):
             config = exp_configs[exp]
@@ -396,11 +422,17 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
             
             criterion = nn.MSELoss()
             optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'])
-            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-                optimizer, 
-                mode='min', 
-                factor=config['factor'], 
-                patience=config['patience']
+            
+            # 计算总步数和预热步数
+            total_steps = epochs * len(train_loader)
+            warmup_steps = config['warmup_epochs'] * len(train_loader)
+            
+            # 使用新的学习率调度器
+            scheduler = WarmupCosineSchedule(
+                optimizer,
+                warmup_steps=warmup_steps,
+                total_steps=total_steps,
+                min_lr=config['min_lr']
             )
             
             # 定义模型保存路径，保存在 "saved_models" 文件夹
