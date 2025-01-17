@@ -125,27 +125,38 @@ class TransformerTimeSeries(nn.Module):
         
         self.src_mask = None
         self.pos_encoder = PositionalEncoding(feature_size, dropout)
-        # 设置 batch_first=True 以解决警告
         encoder_layers = nn.TransformerEncoderLayer(d_model=feature_size, nhead=nhead,
                                                   dim_feedforward=forward_expansion, dropout=dropout,
                                                   batch_first=True)
         self.transformer_encoder = nn.TransformerEncoder(encoder_layers, num_layers=num_layers)
         
-        # 添加一个线性插值层来调整输出大小
-        self.output_projection = nn.Linear(input_window, output_window)
-        self.decoder = nn.Linear(feature_size, 1)
+        # 修改解码器结构
+        hidden_size = 64  # 添加一个隐藏层大小
+        self.decoder = nn.Sequential(
+            nn.Linear(feature_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, 1)
+        )
+        
+        # 添加输出序列长度转换层
+        self.output_projection = nn.Sequential(
+            nn.Linear(input_window, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, output_window)
+        )
 
     def forward(self, src):
         # src shape: (batch_size, input_window, feature_size)
         src = self.pos_encoder(src)
         output = self.transformer_encoder(src)  # (batch_size, input_window, feature_size)
+        
+        # 通过解码器
         output = self.decoder(output)  # (batch_size, input_window, 1)
         output = output.squeeze(-1)  # (batch_size, input_window)
         
-        # 调整输出序列长度以匹配目标长度
-        output = output.transpose(1, 0)  # (input_window, batch_size)
-        output = self.output_projection(output)  # (output_window, batch_size)
-        output = output.transpose(1, 0)  # (batch_size, output_window)
+        # 调整输出序列长度
+        batch_size = output.shape[0]
+        output = self.output_projection(output)  # (batch_size, output_window)
         
         return output
 
