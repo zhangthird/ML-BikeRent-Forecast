@@ -43,11 +43,13 @@ def load_data(train_path, test_path):
 
 
 def preprocess_data(train_df, test_df):
-    # 合并训练和测试数据以进行统一的预处理
-    combined = pd.concat([train_df, test_df], sort=False).reset_index(drop=True)
-
+    # 先处理训练数据
+    train_df = train_df.copy()
+    test_df = test_df.copy()
+    
     # 处理日期
-    combined['dteday'] = pd.to_datetime(combined['dteday'])
+    train_df['dteday'] = pd.to_datetime(train_df['dteday'])
+    test_df['dteday'] = pd.to_datetime(test_df['dteday'])
 
     # 选择特征
     features = ['season', 'yr', 'mnth', 'hr', 'holiday', 'weekday', 'workingday',
@@ -55,25 +57,26 @@ def preprocess_data(train_df, test_df):
     target = 'cnt'
 
     # 填充缺失值（如果有）
-    combined.ffill(inplace=True)  # 使用 ffill 代替 fillna
+    train_df.ffill(inplace=True)
+    test_df.ffill(inplace=True)
 
-    # 标准化数值特征
+    # 使用训练集来拟合标准化器
     scaler_features = StandardScaler()
-    combined[features] = scaler_features.fit_transform(combined[features])
-
-    # 标准化目标变量
     scaler_cnt = StandardScaler()
-    combined['cnt'] = scaler_cnt.fit_transform(combined[['cnt']])
-
-    # 分割为训练集、验证集和测试集
-    train_size = len(train_df)
-    train_val = combined.iloc[:train_size]
-    test = combined.iloc[train_size:]
-
+    
+    # 使用训练集数据拟合标准化器
+    train_df[features] = scaler_features.fit_transform(train_df[features])
+    train_df['cnt'] = scaler_cnt.fit_transform(train_df[['cnt']])
+    
+    # 使用训练集的统计量来转换测试集
+    test_df[features] = scaler_features.transform(test_df[features])
+    test_df['cnt'] = scaler_cnt.transform(test_df[['cnt']])
+    
     # 将训练数据分成训练集和验证集
-    train_idx = int(len(train_val) * 0.8)
-    train = train_val.iloc[:train_idx]
-    val = train_val.iloc[train_idx:]
+    train_idx = int(len(train_df) * 0.8)
+    train = train_df.iloc[:train_idx]
+    val = train_df.iloc[train_idx:]
+    test = test_df
 
     return train, val, test, scaler_features, scaler_cnt, features, target
 
@@ -436,6 +439,10 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
             model.eval()
             with torch.no_grad():
                 X, y, input_cnt = next(iter(test_loader))
+                print("数据形状:")
+                print(f"X (输入特征): {X.shape}")
+                print(f"y (目标值): {y.shape}")
+                print(f"input_cnt (输入序列): {input_cnt.shape}")
                 X = X.to(device)
                 y = y.to(device)
                 predictions = model(X).cpu().numpy()
@@ -444,7 +451,7 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
                 predictions = scaler_cnt.inverse_transform(predictions)
                 true = scaler_cnt.inverse_transform(true)
                 # 绘制时传入真实输入序列 input_cnt
-                plot_predictions(input_cnt[1], true[1], predictions[1],
+                plot_predictions(input_cnt[0], true[0], predictions[0],
                                  f'Experiment {exp + 1} - {prediction_type.capitalize()} Predictions vs Ground Truth',
                                  scaler_cnt)
 
