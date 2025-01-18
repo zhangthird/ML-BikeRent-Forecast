@@ -79,7 +79,7 @@ class FeatureAttention(nn.Module):
             batch_first=True
         )
         self.dropout = nn.Dropout(dropout)
-        self.norm = nn.LayerNorm(input_window)
+        self.norm = nn.LayerNorm(feature_size)
         
     def forward(self, x):
         """
@@ -135,6 +135,7 @@ class iTransformerTimeSeries(nn.Module):
         # Feature attention layers
         self.feature_attention_layers = nn.ModuleList([
             FeatureAttention(
+                input_window=input_window,
                 feature_size=feature_size,  # 传入feature_size
                 nhead=nhead,
                 dropout=dropout
