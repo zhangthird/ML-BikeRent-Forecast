@@ -69,12 +69,11 @@ class InvertedPositionalEncoding(nn.Module):
 
 class FeatureAttention(nn.Module):
     """Enhanced feature-wise attention mechanism"""
-    def __init__(self, input_window, nhead, dropout=0.1):
+    def __init__(self, input_window, feature_size=12, nhead=4, dropout=0.1):
         super(FeatureAttention, self).__init__()
-        # 修改attention层，使用input_window作为embed_dim
         self.attention = nn.MultiheadAttention(
             # time_dim, 
-            embed_dim=input_window,  # 修改为input_window
+            embed_dim=feature_size,  # 将特征维度当作 embedding 维度
             num_heads=nhead,
             dropout=dropout,
             batch_first=True
@@ -136,7 +135,6 @@ class iTransformerTimeSeries(nn.Module):
         # Feature attention layers
         self.feature_attention_layers = nn.ModuleList([
             FeatureAttention(
-                input_window=input_window,
                 feature_size=feature_size,  # 传入feature_size
                 nhead=nhead,
                 dropout=dropout
