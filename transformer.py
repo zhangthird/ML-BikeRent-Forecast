@@ -27,7 +27,6 @@ def set_seed(seed=42):
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
 
-
 set_seed()
 
 # 检查是否有GPU可用
