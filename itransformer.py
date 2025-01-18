@@ -87,18 +87,12 @@ class FeatureAttention(nn.Module):
         Args:
             x: [batch_size, feature_size, input_window]
         """
-        # 维度转换
-        x = x.transpose(1, 2)  # [batch_size, input_window, feature_size]
-        
-        # 应用注意力机制
+        # 无需转置，直接使用特征维度
+        x = x.permute(0, 2, 1)  # [batch_size, input_window, feature_size]
         attn_out, _ = self.attention(x, x, x)
-        
-        # 残差连接和归一化
         x = x + self.dropout(attn_out)
         x = self.norm(x)
-        
-        # 转回原始维度
-        return x.transpose(1, 2)  # [batch_size, feature_size, input_window]
+        return x.permute(0, 2, 1)  # [batch_size, feature_size, input_window]
 
 class FeatureMultiScaleConv(nn.Module):
     """多尺度卷积 + GLU 门控"""
@@ -141,7 +135,12 @@ class iTransformerTimeSeries(nn.Module):
         
         # Feature attention layers
         self.feature_attention_layers = nn.ModuleList([
-            FeatureAttention(input_window, nhead) 
+            FeatureAttention(
+                input_window=input_window,
+                feature_size=feature_size,  # 传入feature_size
+                nhead=nhead,
+                dropout=dropout
+            ) 
             for _ in range(num_layers)
         ])
         
