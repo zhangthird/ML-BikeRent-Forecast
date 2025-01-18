@@ -294,7 +294,9 @@ def run_experiment(train_loader, val_loader, test_loader, scaler_cnt, features, 
                 output_window=output_window
             ).to(device)
             
-            criterion = nn.MSELoss()
+            # criterion = nn.MSELoss()  
+            # 创建Huber Loss
+            criterion = nn.HuberLoss(delta=1.0)  # delta参数控制MSE和MAE之间的平滑过渡
             optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
             
             save_path = os.path.join('saved_models', f'itransformer_model_{prediction_type}_exp{exp + 1}.pth')
