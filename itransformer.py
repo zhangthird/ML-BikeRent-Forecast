@@ -37,7 +37,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 # 引入所有数据处理相关函数
-from transformer import (
+from baseline.models.transformer import (
     load_data, preprocess_data, BikeDataset,
     train_model, evaluate_model, plot_losses, plot_predictions
 )
