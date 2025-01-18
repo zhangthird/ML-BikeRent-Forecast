@@ -69,18 +69,36 @@ class InvertedPositionalEncoding(nn.Module):
 
 class FeatureAttention(nn.Module):
     """Enhanced feature-wise attention mechanism"""
-    def __init__(self, time_dim, nhead):
+    def __init__(self, input_window, nhead, dropout=0.1):
         super(FeatureAttention, self).__init__()
-        self.attention = nn.MultiheadAttention(time_dim, nhead, batch_first=True)
-        self.norm = nn.LayerNorm(time_dim)
+        # 修改attention层，使用input_window作为embed_dim
+        self.attention = nn.MultiheadAttention(
+            # time_dim, 
+            embed_dim=input_window,  # 修改为input_window
+            num_heads=nhead,
+            dropout=dropout,
+            batch_first=True
+        )
+        self.dropout = nn.Dropout(dropout)
+        self.norm = nn.LayerNorm(input_window)
         
     def forward(self, x):
-        # x shape: [batch_size, feature_dim, time_dim]
-        orig_x = x
-        x = x.transpose(1, 2)  # [batch_size, time_dim, feature_dim]
+        """
+        Args:
+            x: [batch_size, feature_size, input_window]
+        """
+        # 维度转换
+        x = x.transpose(1, 2)  # [batch_size, input_window, feature_size]
+        
+        # 应用注意力机制
         attn_out, _ = self.attention(x, x, x)
-        attn_out = attn_out.transpose(1, 2)  # [batch_size, feature_dim, time_dim]
-        return self.norm(orig_x + attn_out)
+        
+        # 残差连接和归一化
+        x = x + self.dropout(attn_out)
+        x = self.norm(x)
+        
+        # 转回原始维度
+        return x.transpose(1, 2)  # [batch_size, feature_size, input_window]
 
 class FeatureMultiScaleConv(nn.Module):
     """多尺度卷积 + GLU 门控"""
