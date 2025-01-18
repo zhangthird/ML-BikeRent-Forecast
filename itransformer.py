@@ -78,20 +78,36 @@ class FeatureAttention(nn.Module):
             dropout=dropout,
             batch_first=True
         )
-        self.dropout = nn.Dropout(dropout)
-        self.norm = nn.LayerNorm(feature_size)
-        
+        # 对应特征维度的归一化和dropout
+        self.norm1 = nn.LayerNorm(feature_size)  # 预归一化
+        self.norm2 = nn.LayerNorm(feature_size)  # 后归一化
+        self.dropout1 = nn.Dropout(dropout)
+        self.dropout2 = nn.Dropout(dropout)
+            
     def forward(self, x):
         """
         Args:
             x: [batch_size, feature_size, input_window]
+        Returns:
+            x: [batch_size, feature_size, input_window]
         """
-        # 无需转置，直接使用特征维度
-        x = x.permute(0, 2, 1)  # [batch_size, input_window, feature_size]
+        # 1. 转换维度用于注意力计算
+        x = x.permute(0, 2, 1)  # [B, T, F]
+        
+        # 2. 预归一化
+        residual = x
+        x = self.norm1(x)
+        
+        # 3. 注意力计算
         attn_out, _ = self.attention(x, x, x)
-        x = x + self.dropout(attn_out)
-        x = self.norm(x)
-        return x.permute(0, 2, 1)  # [batch_size, feature_size, input_window]
+        x = residual + self.dropout1(attn_out)
+        
+        # 4. 后归一化
+        x = self.norm2(x)
+        x = self.dropout2(x)
+        
+        # 5. 转回原始维度
+        return x.permute(0, 2, 1)  # [B, F, T]
 
 class FeatureMultiScaleConv(nn.Module):
     """多尺度卷积 + GLU 门控"""
