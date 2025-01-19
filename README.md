@@ -100,10 +100,10 @@ pip install torch numpy pandas matplotlib scikit-learn
 
    ```bash
    # 短期预测
-   python -m improved.models.itransformer --mode short --epochs 100
+   python -m Improved-iTransformer.models.itransformer --mode short --epochs 100
    
    # 长期预测
-   python -m improved.models.itransformer --mode long --epochs 100
+   python -m Improved-iTransformer.models.itransformer --mode long --epochs 100
    ```
 
 ## 输出目录说明
