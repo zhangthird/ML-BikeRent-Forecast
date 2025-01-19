@@ -45,11 +45,15 @@ ML_Bike_Rental_Forecast/
 
 ## 模型架构
 
+### LSTM
+
 ### 标准 Transformer
 
 - 基于标准 Transformer 编码器-解码器架构
 - 使用时序注意力机制和位置编码
 - 适用于一般时序预测任务
+
+### Attention-CNN-LSTM
 
 ### 改进版 iTransformer
 
