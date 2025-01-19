@@ -1,0 +1,597 @@
+Using device: cpu
+
+Running iTransformer Long Prediction with input window = 96 and output window = 240
+
+Experiment 1/5 - 固定学习率(0.001) - 随机种子 42
+Random seed: 42
+Learning rate: 0.001 (固定) - Epoch 1
+Epoch [1/100], Train Loss: 0.1589, Val Loss: 0.2665
+Epoch [2/100], Train Loss: 0.1062, Val Loss: 0.2051
+Epoch [3/100], Train Loss: 0.0930, Val Loss: 0.1905
+Epoch [4/100], Train Loss: 0.0851, Val Loss: 0.1879
+Epoch [5/100], Train Loss: 0.0802, Val Loss: 0.1870
+Epoch [6/100], Train Loss: 0.0752, Val Loss: 0.1908
+Epoch [7/100], Train Loss: 0.0712, Val Loss: 0.1844
+Epoch [8/100], Train Loss: 0.0672, Val Loss: 0.1872
+Epoch [9/100], Train Loss: 0.0637, Val Loss: 0.2006
+Epoch [10/100], Train Loss: 0.0597, Val Loss: 0.2067
+Learning rate: 0.001 (固定) - Epoch 11
+Epoch [11/100], Train Loss: 0.0565, Val Loss: 0.2104
+Epoch [12/100], Train Loss: 0.0536, Val Loss: 0.2069
+Epoch [13/100], Train Loss: 0.0508, Val Loss: 0.2022
+Epoch [14/100], Train Loss: 0.0486, Val Loss: 0.2108
+Epoch [15/100], Train Loss: 0.0463, Val Loss: 0.2070
+Epoch [16/100], Train Loss: 0.0442, Val Loss: 0.2160
+Epoch [17/100], Train Loss: 0.0425, Val Loss: 0.2109
+Epoch [18/100], Train Loss: 0.0411, Val Loss: 0.2112
+Epoch [19/100], Train Loss: 0.0398, Val Loss: 0.2049
+Epoch [20/100], Train Loss: 0.0384, Val Loss: 0.2195
+Learning rate: 0.001 (固定) - Epoch 21
+Epoch [21/100], Train Loss: 0.0373, Val Loss: 0.2224
+Epoch [22/100], Train Loss: 0.0362, Val Loss: 0.2219
+Epoch [23/100], Train Loss: 0.0353, Val Loss: 0.2322
+Epoch [24/100], Train Loss: 0.0341, Val Loss: 0.2230
+Epoch [25/100], Train Loss: 0.0334, Val Loss: 0.2240
+Epoch [26/100], Train Loss: 0.0326, Val Loss: 0.2214
+Epoch [27/100], Train Loss: 0.0319, Val Loss: 0.2244
+Epoch [28/100], Train Loss: 0.0312, Val Loss: 0.2208
+Epoch [29/100], Train Loss: 0.0307, Val Loss: 0.2339
+Epoch [30/100], Train Loss: 0.0300, Val Loss: 0.2261
+Learning rate: 0.001 (固定) - Epoch 31
+Epoch [31/100], Train Loss: 0.0297, Val Loss: 0.2205
+Epoch [32/100], Train Loss: 0.0289, Val Loss: 0.2166
+Epoch [33/100], Train Loss: 0.0287, Val Loss: 0.2246
+Epoch [34/100], Train Loss: 0.0282, Val Loss: 0.2226
+Epoch [35/100], Train Loss: 0.0277, Val Loss: 0.2280
+Epoch [36/100], Train Loss: 0.0274, Val Loss: 0.2265
+Epoch [37/100], Train Loss: 0.0269, Val Loss: 0.2272
+Epoch [38/100], Train Loss: 0.0266, Val Loss: 0.2366
+Epoch [39/100], Train Loss: 0.0262, Val Loss: 0.2265
+Epoch [40/100], Train Loss: 0.0259, Val Loss: 0.2134
+Learning rate: 0.001 (固定) - Epoch 41
+Epoch [41/100], Train Loss: 0.0257, Val Loss: 0.2231
+Epoch [42/100], Train Loss: 0.0252, Val Loss: 0.2181
+Epoch [43/100], Train Loss: 0.0250, Val Loss: 0.2213
+Epoch [44/100], Train Loss: 0.0248, Val Loss: 0.2268
+Epoch [45/100], Train Loss: 0.0245, Val Loss: 0.2300
+Epoch [46/100], Train Loss: 0.0244, Val Loss: 0.2288
+Epoch [47/100], Train Loss: 0.0240, Val Loss: 0.2223
+Epoch [48/100], Train Loss: 0.0239, Val Loss: 0.2283
+Epoch [49/100], Train Loss: 0.0236, Val Loss: 0.2196
+Epoch [50/100], Train Loss: 0.0234, Val Loss: 0.2267
+Learning rate: 0.001 (固定) - Epoch 51
+Epoch [51/100], Train Loss: 0.0233, Val Loss: 0.2213
+Epoch [52/100], Train Loss: 0.0231, Val Loss: 0.2247
+Epoch [53/100], Train Loss: 0.0229, Val Loss: 0.2200
+Epoch [54/100], Train Loss: 0.0227, Val Loss: 0.2208
+Epoch [55/100], Train Loss: 0.0226, Val Loss: 0.2173
+Epoch [56/100], Train Loss: 0.0223, Val Loss: 0.2224
+Epoch [57/100], Train Loss: 0.0222, Val Loss: 0.2218
+Epoch [58/100], Train Loss: 0.0221, Val Loss: 0.2165
+Epoch [59/100], Train Loss: 0.0220, Val Loss: 0.2203
+Epoch [60/100], Train Loss: 0.0217, Val Loss: 0.2131
+Learning rate: 0.001 (固定) - Epoch 61
+Epoch [61/100], Train Loss: 0.0217, Val Loss: 0.2108
+Epoch [62/100], Train Loss: 0.0216, Val Loss: 0.2225
+Epoch [63/100], Train Loss: 0.0214, Val Loss: 0.2232
+Epoch [64/100], Train Loss: 0.0214, Val Loss: 0.2314
+Epoch [65/100], Train Loss: 0.0210, Val Loss: 0.2201
+Epoch [66/100], Train Loss: 0.0210, Val Loss: 0.2199
+Epoch [67/100], Train Loss: 0.0209, Val Loss: 0.2187
+Epoch [68/100], Train Loss: 0.0207, Val Loss: 0.2186
+Epoch [69/100], Train Loss: 0.0206, Val Loss: 0.2101
+Epoch [70/100], Train Loss: 0.0204, Val Loss: 0.2141
+Learning rate: 0.001 (固定) - Epoch 71
+Epoch [71/100], Train Loss: 0.0204, Val Loss: 0.2187
+Epoch [72/100], Train Loss: 0.0203, Val Loss: 0.2174
+Epoch [73/100], Train Loss: 0.0203, Val Loss: 0.2135
+Epoch [74/100], Train Loss: 0.0202, Val Loss: 0.2106
+Epoch [75/100], Train Loss: 0.0200, Val Loss: 0.2198
+Epoch [76/100], Train Loss: 0.0199, Val Loss: 0.2156
+Epoch [77/100], Train Loss: 0.0198, Val Loss: 0.2128
+Epoch [78/100], Train Loss: 0.0197, Val Loss: 0.2235
+Epoch [79/100], Train Loss: 0.0198, Val Loss: 0.2192
+Epoch [80/100], Train Loss: 0.0196, Val Loss: 0.2229
+Learning rate: 0.001 (固定) - Epoch 81
+Epoch [81/100], Train Loss: 0.0195, Val Loss: 0.2186
+Epoch [82/100], Train Loss: 0.0194, Val Loss: 0.2221
+Epoch [83/100], Train Loss: 0.0194, Val Loss: 0.2107
+Epoch [84/100], Train Loss: 0.0193, Val Loss: 0.2114
+Epoch [85/100], Train Loss: 0.0192, Val Loss: 0.2162
+Epoch [86/100], Train Loss: 0.0191, Val Loss: 0.2142
+Epoch [87/100], Train Loss: 0.0190, Val Loss: 0.2178
+Epoch [88/100], Train Loss: 0.0189, Val Loss: 0.2190
+Epoch [89/100], Train Loss: 0.0189, Val Loss: 0.2220
+Epoch [90/100], Train Loss: 0.0188, Val Loss: 0.2109
+Learning rate: 0.001 (固定) - Epoch 91
+Epoch [91/100], Train Loss: 0.0187, Val Loss: 0.2193
+Epoch [92/100], Train Loss: 0.0187, Val Loss: 0.2119
+Epoch [93/100], Train Loss: 0.0186, Val Loss: 0.2184
+Epoch [94/100], Train Loss: 0.0186, Val Loss: 0.2191
+Epoch [95/100], Train Loss: 0.0185, Val Loss: 0.2324
+Epoch [96/100], Train Loss: 0.0185, Val Loss: 0.2133
+Epoch [97/100], Train Loss: 0.0184, Val Loss: 0.2201
+Epoch [98/100], Train Loss: 0.0183, Val Loss: 0.2155
+Epoch [99/100], Train Loss: 0.0183, Val Loss: 0.2137
+Epoch [100/100], Train Loss: 0.0181, Val Loss: 0.2140
+Experiment 1 - MSE: 24190.1871, MAE: 106.2800
+数据形状:
+X (输入特征): torch.Size([64, 96, 12])
+y (目标值): torch.Size([64, 240])
+input_cnt (输入序列): torch.Size([64, 96])
+
+Experiment 2/5 - 固定学习率(0.001) - 随机种子 123
+Random seed: 123
+Learning rate: 0.001 (固定) - Epoch 1
+Epoch [1/100], Train Loss: 0.1606, Val Loss: 0.2614
+Epoch [2/100], Train Loss: 0.1058, Val Loss: 0.2353
+Epoch [3/100], Train Loss: 0.0918, Val Loss: 0.1966
+Epoch [4/100], Train Loss: 0.0846, Val Loss: 0.1969
+Epoch [5/100], Train Loss: 0.0791, Val Loss: 0.1747
+Epoch [6/100], Train Loss: 0.0749, Val Loss: 0.1895
+Epoch [7/100], Train Loss: 0.0709, Val Loss: 0.1891
+Epoch [8/100], Train Loss: 0.0668, Val Loss: 0.1830
+Epoch [9/100], Train Loss: 0.0631, Val Loss: 0.1921
+Epoch [10/100], Train Loss: 0.0596, Val Loss: 0.1948
+Learning rate: 0.001 (固定) - Epoch 11
+Epoch [11/100], Train Loss: 0.0562, Val Loss: 0.1867
+Epoch [12/100], Train Loss: 0.0533, Val Loss: 0.1986
+Epoch [13/100], Train Loss: 0.0503, Val Loss: 0.1966
+Epoch [14/100], Train Loss: 0.0479, Val Loss: 0.1879
+Epoch [15/100], Train Loss: 0.0459, Val Loss: 0.1877
+Epoch [16/100], Train Loss: 0.0438, Val Loss: 0.1847
+Epoch [17/100], Train Loss: 0.0420, Val Loss: 0.1888
+Epoch [18/100], Train Loss: 0.0405, Val Loss: 0.1936
+Epoch [19/100], Train Loss: 0.0391, Val Loss: 0.1825
+Epoch [20/100], Train Loss: 0.0381, Val Loss: 0.1935
+Learning rate: 0.001 (固定) - Epoch 21
+Epoch [21/100], Train Loss: 0.0368, Val Loss: 0.1800
+Epoch [22/100], Train Loss: 0.0356, Val Loss: 0.1863
+Epoch [23/100], Train Loss: 0.0347, Val Loss: 0.1861
+Epoch [24/100], Train Loss: 0.0338, Val Loss: 0.1819
+Epoch [25/100], Train Loss: 0.0329, Val Loss: 0.1838
+Epoch [26/100], Train Loss: 0.0321, Val Loss: 0.1911
+Epoch [27/100], Train Loss: 0.0313, Val Loss: 0.1788
+Epoch [28/100], Train Loss: 0.0307, Val Loss: 0.1855
+Epoch [29/100], Train Loss: 0.0302, Val Loss: 0.1966
+Epoch [30/100], Train Loss: 0.0294, Val Loss: 0.1931
+Learning rate: 0.001 (固定) - Epoch 31
+Epoch [31/100], Train Loss: 0.0289, Val Loss: 0.1926
+Epoch [32/100], Train Loss: 0.0284, Val Loss: 0.1815
+Epoch [33/100], Train Loss: 0.0280, Val Loss: 0.1891
+Epoch [34/100], Train Loss: 0.0276, Val Loss: 0.1815
+Epoch [35/100], Train Loss: 0.0272, Val Loss: 0.1873
+Epoch [36/100], Train Loss: 0.0268, Val Loss: 0.1916
+Epoch [37/100], Train Loss: 0.0264, Val Loss: 0.1867
+Epoch [38/100], Train Loss: 0.0261, Val Loss: 0.1827
+Epoch [39/100], Train Loss: 0.0258, Val Loss: 0.1830
+Epoch [40/100], Train Loss: 0.0254, Val Loss: 0.1946
+Learning rate: 0.001 (固定) - Epoch 41
+Epoch [41/100], Train Loss: 0.0252, Val Loss: 0.1956
+Epoch [42/100], Train Loss: 0.0248, Val Loss: 0.1849
+Epoch [43/100], Train Loss: 0.0247, Val Loss: 0.1883
+Epoch [44/100], Train Loss: 0.0243, Val Loss: 0.1855
+Epoch [45/100], Train Loss: 0.0241, Val Loss: 0.1824
+Epoch [46/100], Train Loss: 0.0238, Val Loss: 0.1784
+Epoch [47/100], Train Loss: 0.0237, Val Loss: 0.1921
+Epoch [48/100], Train Loss: 0.0235, Val Loss: 0.1922
+Epoch [49/100], Train Loss: 0.0230, Val Loss: 0.1933
+Epoch [50/100], Train Loss: 0.0230, Val Loss: 0.1849
+Learning rate: 0.001 (固定) - Epoch 51
+Epoch [51/100], Train Loss: 0.0228, Val Loss: 0.1898
+Epoch [52/100], Train Loss: 0.0225, Val Loss: 0.1939
+Epoch [53/100], Train Loss: 0.0224, Val Loss: 0.1913
+Epoch [54/100], Train Loss: 0.0223, Val Loss: 0.1885
+Epoch [55/100], Train Loss: 0.0221, Val Loss: 0.1868
+Epoch [56/100], Train Loss: 0.0219, Val Loss: 0.1846
+Epoch [57/100], Train Loss: 0.0217, Val Loss: 0.1884
+Epoch [58/100], Train Loss: 0.0216, Val Loss: 0.1920
+Epoch [59/100], Train Loss: 0.0215, Val Loss: 0.1876
+Epoch [60/100], Train Loss: 0.0214, Val Loss: 0.1943
+Learning rate: 0.001 (固定) - Epoch 61
+Epoch [61/100], Train Loss: 0.0212, Val Loss: 0.1913
+Epoch [62/100], Train Loss: 0.0210, Val Loss: 0.1933
+Epoch [63/100], Train Loss: 0.0209, Val Loss: 0.1995
+Epoch [64/100], Train Loss: 0.0209, Val Loss: 0.2008
+Epoch [65/100], Train Loss: 0.0207, Val Loss: 0.1990
+Epoch [66/100], Train Loss: 0.0206, Val Loss: 0.1970
+Epoch [67/100], Train Loss: 0.0204, Val Loss: 0.1894
+Epoch [68/100], Train Loss: 0.0203, Val Loss: 0.1873
+Epoch [69/100], Train Loss: 0.0202, Val Loss: 0.1924
+Epoch [70/100], Train Loss: 0.0202, Val Loss: 0.1968
+Learning rate: 0.001 (固定) - Epoch 71
+Epoch [71/100], Train Loss: 0.0202, Val Loss: 0.1961
+Epoch [72/100], Train Loss: 0.0200, Val Loss: 0.1943
+Epoch [73/100], Train Loss: 0.0198, Val Loss: 0.2013
+Epoch [74/100], Train Loss: 0.0197, Val Loss: 0.2015
+Epoch [75/100], Train Loss: 0.0196, Val Loss: 0.1963
+Epoch [76/100], Train Loss: 0.0195, Val Loss: 0.1975
+Epoch [77/100], Train Loss: 0.0194, Val Loss: 0.1880
+Epoch [78/100], Train Loss: 0.0194, Val Loss: 0.1981
+Epoch [79/100], Train Loss: 0.0193, Val Loss: 0.1926
+Epoch [80/100], Train Loss: 0.0192, Val Loss: 0.2014
+Learning rate: 0.001 (固定) - Epoch 81
+Epoch [81/100], Train Loss: 0.0192, Val Loss: 0.1950
+Epoch [82/100], Train Loss: 0.0190, Val Loss: 0.1960
+Epoch [83/100], Train Loss: 0.0190, Val Loss: 0.1982
+Epoch [84/100], Train Loss: 0.0189, Val Loss: 0.2037
+Epoch [85/100], Train Loss: 0.0189, Val Loss: 0.2041
+Epoch [86/100], Train Loss: 0.0188, Val Loss: 0.1996
+Epoch [87/100], Train Loss: 0.0188, Val Loss: 0.2102
+Epoch [88/100], Train Loss: 0.0186, Val Loss: 0.1987
+Epoch [89/100], Train Loss: 0.0186, Val Loss: 0.2012
+Epoch [90/100], Train Loss: 0.0183, Val Loss: 0.1969
+Learning rate: 0.001 (固定) - Epoch 91
+Epoch [91/100], Train Loss: 0.0183, Val Loss: 0.1924
+Epoch [92/100], Train Loss: 0.0184, Val Loss: 0.2054
+Epoch [93/100], Train Loss: 0.0184, Val Loss: 0.1967
+Epoch [94/100], Train Loss: 0.0183, Val Loss: 0.2031
+Epoch [95/100], Train Loss: 0.0181, Val Loss: 0.1996
+Epoch [96/100], Train Loss: 0.0181, Val Loss: 0.2035
+Epoch [97/100], Train Loss: 0.0181, Val Loss: 0.2054
+Epoch [98/100], Train Loss: 0.0180, Val Loss: 0.1951
+Epoch [99/100], Train Loss: 0.0180, Val Loss: 0.2045
+Epoch [100/100], Train Loss: 0.0178, Val Loss: 0.1985
+Experiment 2 - MSE: 22233.1021, MAE: 103.0724
+数据形状:
+X (输入特征): torch.Size([64, 96, 12])
+y (目标值): torch.Size([64, 240])
+input_cnt (输入序列): torch.Size([64, 96])
+
+Experiment 3/5 - 固定学习率(0.001) - 随机种子 456
+Random seed: 456
+Learning rate: 0.001 (固定) - Epoch 1
+Epoch [1/100], Train Loss: 0.1598, Val Loss: 0.2420
+Epoch [2/100], Train Loss: 0.1071, Val Loss: 0.2027
+Epoch [3/100], Train Loss: 0.0933, Val Loss: 0.1948
+Epoch [4/100], Train Loss: 0.0860, Val Loss: 0.1901
+Epoch [5/100], Train Loss: 0.0812, Val Loss: 0.1788
+Epoch [6/100], Train Loss: 0.0764, Val Loss: 0.1687
+Epoch [7/100], Train Loss: 0.0723, Val Loss: 0.1754
+Epoch [8/100], Train Loss: 0.0686, Val Loss: 0.1798
+Epoch [9/100], Train Loss: 0.0649, Val Loss: 0.1820
+Epoch [10/100], Train Loss: 0.0612, Val Loss: 0.2011
+Learning rate: 0.001 (固定) - Epoch 11
+Epoch [11/100], Train Loss: 0.0579, Val Loss: 0.2060
+Epoch [12/100], Train Loss: 0.0546, Val Loss: 0.1965
+Epoch [13/100], Train Loss: 0.0517, Val Loss: 0.2097
+Epoch [14/100], Train Loss: 0.0491, Val Loss: 0.1917
+Epoch [15/100], Train Loss: 0.0470, Val Loss: 0.1987
+Epoch [16/100], Train Loss: 0.0450, Val Loss: 0.2028
+Epoch [17/100], Train Loss: 0.0432, Val Loss: 0.1989
+Epoch [18/100], Train Loss: 0.0415, Val Loss: 0.1898
+Epoch [19/100], Train Loss: 0.0401, Val Loss: 0.2099
+Epoch [20/100], Train Loss: 0.0389, Val Loss: 0.2044
+Learning rate: 0.001 (固定) - Epoch 21
+Epoch [21/100], Train Loss: 0.0375, Val Loss: 0.2120
+Epoch [22/100], Train Loss: 0.0364, Val Loss: 0.2086
+Epoch [23/100], Train Loss: 0.0354, Val Loss: 0.2058
+Epoch [24/100], Train Loss: 0.0344, Val Loss: 0.2146
+Epoch [25/100], Train Loss: 0.0335, Val Loss: 0.2047
+Epoch [26/100], Train Loss: 0.0329, Val Loss: 0.2110
+Epoch [27/100], Train Loss: 0.0320, Val Loss: 0.2027
+Epoch [28/100], Train Loss: 0.0312, Val Loss: 0.2046
+Epoch [29/100], Train Loss: 0.0306, Val Loss: 0.2001
+Epoch [30/100], Train Loss: 0.0301, Val Loss: 0.2128
+Learning rate: 0.001 (固定) - Epoch 31
+Epoch [31/100], Train Loss: 0.0295, Val Loss: 0.2059
+Epoch [32/100], Train Loss: 0.0290, Val Loss: 0.2061
+Epoch [33/100], Train Loss: 0.0286, Val Loss: 0.2084
+Epoch [34/100], Train Loss: 0.0281, Val Loss: 0.2105
+Epoch [35/100], Train Loss: 0.0277, Val Loss: 0.2100
+Epoch [36/100], Train Loss: 0.0272, Val Loss: 0.2184
+Epoch [37/100], Train Loss: 0.0269, Val Loss: 0.2082
+Epoch [38/100], Train Loss: 0.0265, Val Loss: 0.2215
+Epoch [39/100], Train Loss: 0.0260, Val Loss: 0.2215
+Epoch [40/100], Train Loss: 0.0258, Val Loss: 0.2071
+Learning rate: 0.001 (固定) - Epoch 41
+Epoch [41/100], Train Loss: 0.0254, Val Loss: 0.2164
+Epoch [42/100], Train Loss: 0.0252, Val Loss: 0.2090
+Epoch [43/100], Train Loss: 0.0249, Val Loss: 0.2122
+Epoch [44/100], Train Loss: 0.0247, Val Loss: 0.2260
+Epoch [45/100], Train Loss: 0.0244, Val Loss: 0.2116
+Epoch [46/100], Train Loss: 0.0242, Val Loss: 0.2135
+Epoch [47/100], Train Loss: 0.0238, Val Loss: 0.2121
+Epoch [48/100], Train Loss: 0.0237, Val Loss: 0.2117
+Epoch [49/100], Train Loss: 0.0234, Val Loss: 0.2110
+Epoch [50/100], Train Loss: 0.0232, Val Loss: 0.2149
+Learning rate: 0.001 (固定) - Epoch 51
+Epoch [51/100], Train Loss: 0.0231, Val Loss: 0.2153
+Epoch [52/100], Train Loss: 0.0229, Val Loss: 0.2040
+Epoch [53/100], Train Loss: 0.0227, Val Loss: 0.2092
+Epoch [54/100], Train Loss: 0.0225, Val Loss: 0.2157
+Epoch [55/100], Train Loss: 0.0223, Val Loss: 0.2085
+Epoch [56/100], Train Loss: 0.0221, Val Loss: 0.2196
+Epoch [57/100], Train Loss: 0.0220, Val Loss: 0.2108
+Epoch [58/100], Train Loss: 0.0219, Val Loss: 0.2110
+Epoch [59/100], Train Loss: 0.0217, Val Loss: 0.2109
+Epoch [60/100], Train Loss: 0.0215, Val Loss: 0.2117
+Learning rate: 0.001 (固定) - Epoch 61
+Epoch [61/100], Train Loss: 0.0214, Val Loss: 0.2183
+Epoch [62/100], Train Loss: 0.0213, Val Loss: 0.2163
+Epoch [63/100], Train Loss: 0.0210, Val Loss: 0.2202
+Epoch [64/100], Train Loss: 0.0210, Val Loss: 0.2074
+Epoch [65/100], Train Loss: 0.0210, Val Loss: 0.2153
+Epoch [66/100], Train Loss: 0.0208, Val Loss: 0.2114
+Epoch [67/100], Train Loss: 0.0207, Val Loss: 0.2130
+Epoch [68/100], Train Loss: 0.0206, Val Loss: 0.2137
+Epoch [69/100], Train Loss: 0.0205, Val Loss: 0.2110
+Epoch [70/100], Train Loss: 0.0204, Val Loss: 0.2139
+Learning rate: 0.001 (固定) - Epoch 71
+Epoch [71/100], Train Loss: 0.0203, Val Loss: 0.2158
+Epoch [72/100], Train Loss: 0.0201, Val Loss: 0.2151
+Epoch [73/100], Train Loss: 0.0201, Val Loss: 0.2204
+Epoch [74/100], Train Loss: 0.0198, Val Loss: 0.2183
+Epoch [75/100], Train Loss: 0.0199, Val Loss: 0.2185
+Epoch [76/100], Train Loss: 0.0197, Val Loss: 0.2229
+Epoch [77/100], Train Loss: 0.0197, Val Loss: 0.2124
+Epoch [78/100], Train Loss: 0.0196, Val Loss: 0.2161
+Epoch [79/100], Train Loss: 0.0194, Val Loss: 0.2262
+Epoch [80/100], Train Loss: 0.0193, Val Loss: 0.2167
+Learning rate: 0.001 (固定) - Epoch 81
+Epoch [81/100], Train Loss: 0.0193, Val Loss: 0.2194
+Epoch [82/100], Train Loss: 0.0192, Val Loss: 0.2114
+Epoch [83/100], Train Loss: 0.0193, Val Loss: 0.2110
+Epoch [84/100], Train Loss: 0.0192, Val Loss: 0.2300
+Epoch [85/100], Train Loss: 0.0191, Val Loss: 0.2224
+Epoch [86/100], Train Loss: 0.0189, Val Loss: 0.2069
+Epoch [87/100], Train Loss: 0.0188, Val Loss: 0.2110
+Epoch [88/100], Train Loss: 0.0188, Val Loss: 0.2121
+Epoch [89/100], Train Loss: 0.0186, Val Loss: 0.2176
+Epoch [90/100], Train Loss: 0.0186, Val Loss: 0.2101
+Learning rate: 0.001 (固定) - Epoch 91
+Epoch [91/100], Train Loss: 0.0186, Val Loss: 0.2105
+Epoch [92/100], Train Loss: 0.0185, Val Loss: 0.2129
+Epoch [93/100], Train Loss: 0.0184, Val Loss: 0.2054
+Epoch [94/100], Train Loss: 0.0183, Val Loss: 0.2088
+Epoch [95/100], Train Loss: 0.0183, Val Loss: 0.2191
+Epoch [96/100], Train Loss: 0.0182, Val Loss: 0.2067
+Epoch [97/100], Train Loss: 0.0183, Val Loss: 0.2072
+Epoch [98/100], Train Loss: 0.0180, Val Loss: 0.2137
+Epoch [99/100], Train Loss: 0.0181, Val Loss: 0.2106
+Epoch [100/100], Train Loss: 0.0181, Val Loss: 0.2039
+Experiment 3 - MSE: 21616.1890, MAE: 99.7543
+数据形状:
+X (输入特征): torch.Size([64, 96, 12])
+y (目标值): torch.Size([64, 240])
+input_cnt (输入序列): torch.Size([64, 96])
+
+Experiment 4/5 - 固定学习率(0.001) - 随机种子 789
+Random seed: 789
+Learning rate: 0.001 (固定) - Epoch 1
+Epoch [1/100], Train Loss: 0.1645, Val Loss: 0.2607
+Epoch [2/100], Train Loss: 0.1075, Val Loss: 0.1912
+Epoch [3/100], Train Loss: 0.0934, Val Loss: 0.1862
+Epoch [4/100], Train Loss: 0.0859, Val Loss: 0.1617
+Epoch [5/100], Train Loss: 0.0807, Val Loss: 0.1688
+Epoch [6/100], Train Loss: 0.0766, Val Loss: 0.1648
+Epoch [7/100], Train Loss: 0.0719, Val Loss: 0.1787
+Epoch [8/100], Train Loss: 0.0681, Val Loss: 0.1803
+Epoch [9/100], Train Loss: 0.0643, Val Loss: 0.1780
+Epoch [10/100], Train Loss: 0.0611, Val Loss: 0.1760
+Learning rate: 0.001 (固定) - Epoch 11
+Epoch [11/100], Train Loss: 0.0577, Val Loss: 0.1942
+Epoch [12/100], Train Loss: 0.0549, Val Loss: 0.1910
+Epoch [13/100], Train Loss: 0.0519, Val Loss: 0.1853
+Epoch [14/100], Train Loss: 0.0495, Val Loss: 0.1859
+Epoch [15/100], Train Loss: 0.0473, Val Loss: 0.1879
+Epoch [16/100], Train Loss: 0.0451, Val Loss: 0.1940
+Epoch [17/100], Train Loss: 0.0435, Val Loss: 0.2008
+Epoch [18/100], Train Loss: 0.0417, Val Loss: 0.1917
+Epoch [19/100], Train Loss: 0.0404, Val Loss: 0.1915
+Epoch [20/100], Train Loss: 0.0389, Val Loss: 0.1864
+Learning rate: 0.001 (固定) - Epoch 21
+Epoch [21/100], Train Loss: 0.0378, Val Loss: 0.1839
+Epoch [22/100], Train Loss: 0.0368, Val Loss: 0.1954
+Epoch [23/100], Train Loss: 0.0359, Val Loss: 0.1924
+Epoch [24/100], Train Loss: 0.0346, Val Loss: 0.1947
+Epoch [25/100], Train Loss: 0.0339, Val Loss: 0.1920
+Epoch [26/100], Train Loss: 0.0330, Val Loss: 0.2078
+Epoch [27/100], Train Loss: 0.0323, Val Loss: 0.1914
+Epoch [28/100], Train Loss: 0.0316, Val Loss: 0.2001
+Epoch [29/100], Train Loss: 0.0309, Val Loss: 0.1942
+Epoch [30/100], Train Loss: 0.0303, Val Loss: 0.1916
+Learning rate: 0.001 (固定) - Epoch 31
+Epoch [31/100], Train Loss: 0.0297, Val Loss: 0.1978
+Epoch [32/100], Train Loss: 0.0292, Val Loss: 0.1999
+Epoch [33/100], Train Loss: 0.0288, Val Loss: 0.1905
+Epoch [34/100], Train Loss: 0.0284, Val Loss: 0.1986
+Epoch [35/100], Train Loss: 0.0278, Val Loss: 0.1980
+Epoch [36/100], Train Loss: 0.0276, Val Loss: 0.1951
+Epoch [37/100], Train Loss: 0.0272, Val Loss: 0.1970
+Epoch [38/100], Train Loss: 0.0266, Val Loss: 0.1909
+Epoch [39/100], Train Loss: 0.0264, Val Loss: 0.1954
+Epoch [40/100], Train Loss: 0.0259, Val Loss: 0.1959
+Learning rate: 0.001 (固定) - Epoch 41
+Epoch [41/100], Train Loss: 0.0257, Val Loss: 0.2024
+Epoch [42/100], Train Loss: 0.0254, Val Loss: 0.2089
+Epoch [43/100], Train Loss: 0.0250, Val Loss: 0.2058
+Epoch [44/100], Train Loss: 0.0249, Val Loss: 0.2003
+Epoch [45/100], Train Loss: 0.0245, Val Loss: 0.1941
+Epoch [46/100], Train Loss: 0.0243, Val Loss: 0.1981
+Epoch [47/100], Train Loss: 0.0241, Val Loss: 0.1917
+Epoch [48/100], Train Loss: 0.0239, Val Loss: 0.1951
+Epoch [49/100], Train Loss: 0.0238, Val Loss: 0.2006
+Epoch [50/100], Train Loss: 0.0234, Val Loss: 0.2038
+Learning rate: 0.001 (固定) - Epoch 51
+Epoch [51/100], Train Loss: 0.0232, Val Loss: 0.1930
+Epoch [52/100], Train Loss: 0.0231, Val Loss: 0.2023
+Epoch [53/100], Train Loss: 0.0229, Val Loss: 0.1972
+Epoch [54/100], Train Loss: 0.0227, Val Loss: 0.1964
+Epoch [55/100], Train Loss: 0.0225, Val Loss: 0.1977
+Epoch [56/100], Train Loss: 0.0224, Val Loss: 0.2034
+Epoch [57/100], Train Loss: 0.0222, Val Loss: 0.2025
+Epoch [58/100], Train Loss: 0.0220, Val Loss: 0.1989
+Epoch [59/100], Train Loss: 0.0219, Val Loss: 0.2047
+Epoch [60/100], Train Loss: 0.0218, Val Loss: 0.1987
+Learning rate: 0.001 (固定) - Epoch 61
+Epoch [61/100], Train Loss: 0.0216, Val Loss: 0.1972
+Epoch [62/100], Train Loss: 0.0214, Val Loss: 0.1942
+Epoch [63/100], Train Loss: 0.0212, Val Loss: 0.2086
+Epoch [64/100], Train Loss: 0.0212, Val Loss: 0.1950
+Epoch [65/100], Train Loss: 0.0210, Val Loss: 0.1974
+Epoch [66/100], Train Loss: 0.0208, Val Loss: 0.1969
+Epoch [67/100], Train Loss: 0.0207, Val Loss: 0.1959
+Epoch [68/100], Train Loss: 0.0206, Val Loss: 0.2046
+Epoch [69/100], Train Loss: 0.0206, Val Loss: 0.2033
+Epoch [70/100], Train Loss: 0.0204, Val Loss: 0.2050
+Learning rate: 0.001 (固定) - Epoch 71
+Epoch [71/100], Train Loss: 0.0204, Val Loss: 0.2071
+Epoch [72/100], Train Loss: 0.0202, Val Loss: 0.2033
+Epoch [73/100], Train Loss: 0.0201, Val Loss: 0.2009
+Epoch [74/100], Train Loss: 0.0201, Val Loss: 0.2000
+Epoch [75/100], Train Loss: 0.0199, Val Loss: 0.2000
+Epoch [76/100], Train Loss: 0.0198, Val Loss: 0.1942
+Epoch [77/100], Train Loss: 0.0198, Val Loss: 0.2004
+Epoch [78/100], Train Loss: 0.0197, Val Loss: 0.2001
+Epoch [79/100], Train Loss: 0.0196, Val Loss: 0.1984
+Epoch [80/100], Train Loss: 0.0195, Val Loss: 0.1961
+Learning rate: 0.001 (固定) - Epoch 81
+Epoch [81/100], Train Loss: 0.0194, Val Loss: 0.1993
+Epoch [82/100], Train Loss: 0.0192, Val Loss: 0.2052
+Epoch [83/100], Train Loss: 0.0191, Val Loss: 0.2015
+Epoch [84/100], Train Loss: 0.0191, Val Loss: 0.1992
+Epoch [85/100], Train Loss: 0.0191, Val Loss: 0.1947
+Epoch [86/100], Train Loss: 0.0190, Val Loss: 0.1996
+Epoch [87/100], Train Loss: 0.0189, Val Loss: 0.1960
+Epoch [88/100], Train Loss: 0.0188, Val Loss: 0.1983
+Epoch [89/100], Train Loss: 0.0187, Val Loss: 0.2124
+Epoch [90/100], Train Loss: 0.0187, Val Loss: 0.2050
+Learning rate: 0.001 (固定) - Epoch 91
+Epoch [91/100], Train Loss: 0.0185, Val Loss: 0.2069
+Epoch [92/100], Train Loss: 0.0185, Val Loss: 0.2038
+Epoch [93/100], Train Loss: 0.0184, Val Loss: 0.1996
+Epoch [94/100], Train Loss: 0.0185, Val Loss: 0.1988
+Epoch [95/100], Train Loss: 0.0183, Val Loss: 0.1961
+Epoch [96/100], Train Loss: 0.0183, Val Loss: 0.1984
+Epoch [97/100], Train Loss: 0.0182, Val Loss: 0.1981
+Epoch [98/100], Train Loss: 0.0182, Val Loss: 0.1997
+Epoch [99/100], Train Loss: 0.0181, Val Loss: 0.2038
+Epoch [100/100], Train Loss: 0.0180, Val Loss: 0.2030
+Experiment 4 - MSE: 21641.2777, MAE: 99.7138
+数据形状:
+X (输入特征): torch.Size([64, 96, 12])
+y (目标值): torch.Size([64, 240])
+input_cnt (输入序列): torch.Size([64, 96])
+
+Experiment 5/5 - 固定学习率(0.001) - 随机种子 1024
+Random seed: 1024
+Learning rate: 0.001 (固定) - Epoch 1
+Epoch [1/100], Train Loss: 0.1616, Val Loss: 0.2414
+Epoch [2/100], Train Loss: 0.1062, Val Loss: 0.2042
+Epoch [3/100], Train Loss: 0.0927, Val Loss: 0.1992
+Epoch [4/100], Train Loss: 0.0852, Val Loss: 0.1898
+Epoch [5/100], Train Loss: 0.0796, Val Loss: 0.1909
+Epoch [6/100], Train Loss: 0.0752, Val Loss: 0.1961
+Epoch [7/100], Train Loss: 0.0709, Val Loss: 0.1877
+Epoch [8/100], Train Loss: 0.0670, Val Loss: 0.1843
+Epoch [9/100], Train Loss: 0.0632, Val Loss: 0.2013
+Epoch [10/100], Train Loss: 0.0598, Val Loss: 0.1946
+Learning rate: 0.001 (固定) - Epoch 11
+Epoch [11/100], Train Loss: 0.0562, Val Loss: 0.2118
+Epoch [12/100], Train Loss: 0.0532, Val Loss: 0.2029
+Epoch [13/100], Train Loss: 0.0502, Val Loss: 0.2068
+Epoch [14/100], Train Loss: 0.0482, Val Loss: 0.2089
+Epoch [15/100], Train Loss: 0.0460, Val Loss: 0.1965
+Epoch [16/100], Train Loss: 0.0439, Val Loss: 0.2070
+Epoch [17/100], Train Loss: 0.0422, Val Loss: 0.2013
+Epoch [18/100], Train Loss: 0.0406, Val Loss: 0.2069
+Epoch [19/100], Train Loss: 0.0392, Val Loss: 0.2006
+Epoch [20/100], Train Loss: 0.0380, Val Loss: 0.2087
+Learning rate: 0.001 (固定) - Epoch 21
+Epoch [21/100], Train Loss: 0.0366, Val Loss: 0.1994
+Epoch [22/100], Train Loss: 0.0356, Val Loss: 0.1952
+Epoch [23/100], Train Loss: 0.0346, Val Loss: 0.1982
+Epoch [24/100], Train Loss: 0.0339, Val Loss: 0.1991
+Epoch [25/100], Train Loss: 0.0329, Val Loss: 0.2002
+Epoch [26/100], Train Loss: 0.0321, Val Loss: 0.2002
+Epoch [27/100], Train Loss: 0.0315, Val Loss: 0.2051
+Epoch [28/100], Train Loss: 0.0307, Val Loss: 0.1969
+Epoch [29/100], Train Loss: 0.0302, Val Loss: 0.2018
+Epoch [30/100], Train Loss: 0.0296, Val Loss: 0.1912
+Learning rate: 0.001 (固定) - Epoch 31
+Epoch [31/100], Train Loss: 0.0289, Val Loss: 0.1940
+Epoch [32/100], Train Loss: 0.0285, Val Loss: 0.2029
+Epoch [33/100], Train Loss: 0.0281, Val Loss: 0.1933
+Epoch [34/100], Train Loss: 0.0275, Val Loss: 0.1976
+Epoch [35/100], Train Loss: 0.0273, Val Loss: 0.1978
+Epoch [36/100], Train Loss: 0.0268, Val Loss: 0.1961
+Epoch [37/100], Train Loss: 0.0266, Val Loss: 0.2004
+Epoch [38/100], Train Loss: 0.0262, Val Loss: 0.1942
+Epoch [39/100], Train Loss: 0.0258, Val Loss: 0.1885
+Epoch [40/100], Train Loss: 0.0256, Val Loss: 0.1919
+Learning rate: 0.001 (固定) - Epoch 41
+Epoch [41/100], Train Loss: 0.0251, Val Loss: 0.1979
+Epoch [42/100], Train Loss: 0.0248, Val Loss: 0.1929
+Epoch [43/100], Train Loss: 0.0246, Val Loss: 0.1923
+Epoch [44/100], Train Loss: 0.0243, Val Loss: 0.1910
+Epoch [45/100], Train Loss: 0.0240, Val Loss: 0.1820
+Epoch [46/100], Train Loss: 0.0238, Val Loss: 0.1854
+Epoch [47/100], Train Loss: 0.0237, Val Loss: 0.2031
+Epoch [48/100], Train Loss: 0.0234, Val Loss: 0.2069
+Epoch [49/100], Train Loss: 0.0232, Val Loss: 0.1966
+Epoch [50/100], Train Loss: 0.0229, Val Loss: 0.1918
+Learning rate: 0.001 (固定) - Epoch 51
+Epoch [51/100], Train Loss: 0.0228, Val Loss: 0.1951
+Epoch [52/100], Train Loss: 0.0226, Val Loss: 0.1920
+Epoch [53/100], Train Loss: 0.0224, Val Loss: 0.1979
+Epoch [54/100], Train Loss: 0.0223, Val Loss: 0.1918
+Epoch [55/100], Train Loss: 0.0221, Val Loss: 0.1883
+Epoch [56/100], Train Loss: 0.0220, Val Loss: 0.1980
+Epoch [57/100], Train Loss: 0.0220, Val Loss: 0.1947
+Epoch [58/100], Train Loss: 0.0217, Val Loss: 0.1876
+Epoch [59/100], Train Loss: 0.0215, Val Loss: 0.1970
+Epoch [60/100], Train Loss: 0.0214, Val Loss: 0.1928
+Learning rate: 0.001 (固定) - Epoch 61
+Epoch [61/100], Train Loss: 0.0211, Val Loss: 0.1892
+Epoch [62/100], Train Loss: 0.0211, Val Loss: 0.1979
+Epoch [63/100], Train Loss: 0.0209, Val Loss: 0.1985
+Epoch [64/100], Train Loss: 0.0208, Val Loss: 0.1998
+Epoch [65/100], Train Loss: 0.0207, Val Loss: 0.1934
+Epoch [66/100], Train Loss: 0.0206, Val Loss: 0.1935
+Epoch [67/100], Train Loss: 0.0205, Val Loss: 0.1983
+Epoch [68/100], Train Loss: 0.0205, Val Loss: 0.1912
+Epoch [69/100], Train Loss: 0.0203, Val Loss: 0.1930
+Epoch [70/100], Train Loss: 0.0201, Val Loss: 0.2022
+Learning rate: 0.001 (固定) - Epoch 71
+Epoch [71/100], Train Loss: 0.0200, Val Loss: 0.1963
+Epoch [72/100], Train Loss: 0.0200, Val Loss: 0.1987
+Epoch [73/100], Train Loss: 0.0199, Val Loss: 0.1999
+Epoch [74/100], Train Loss: 0.0198, Val Loss: 0.1956
+Epoch [75/100], Train Loss: 0.0197, Val Loss: 0.2058
+Epoch [76/100], Train Loss: 0.0195, Val Loss: 0.1999
+Epoch [77/100], Train Loss: 0.0195, Val Loss: 0.1971
+Epoch [78/100], Train Loss: 0.0195, Val Loss: 0.1979
+Epoch [79/100], Train Loss: 0.0193, Val Loss: 0.1999
+Epoch [80/100], Train Loss: 0.0193, Val Loss: 0.2029
+Learning rate: 0.001 (固定) - Epoch 81
+Epoch [81/100], Train Loss: 0.0191, Val Loss: 0.1995
+Epoch [82/100], Train Loss: 0.0191, Val Loss: 0.1952
+Epoch [83/100], Train Loss: 0.0191, Val Loss: 0.1892
+Epoch [84/100], Train Loss: 0.0189, Val Loss: 0.2042
+Epoch [85/100], Train Loss: 0.0189, Val Loss: 0.2020
+Epoch [86/100], Train Loss: 0.0188, Val Loss: 0.1938
+Epoch [87/100], Train Loss: 0.0189, Val Loss: 0.2035
+Epoch [88/100], Train Loss: 0.0187, Val Loss: 0.2040
+Epoch [89/100], Train Loss: 0.0186, Val Loss: 0.1984
+Epoch [90/100], Train Loss: 0.0185, Val Loss: 0.2056
+Learning rate: 0.001 (固定) - Epoch 91
+Epoch [91/100], Train Loss: 0.0184, Val Loss: 0.1963
+Epoch [92/100], Train Loss: 0.0184, Val Loss: 0.2155
+Epoch [93/100], Train Loss: 0.0183, Val Loss: 0.2063
+Epoch [94/100], Train Loss: 0.0183, Val Loss: 0.2101
+Epoch [95/100], Train Loss: 0.0182, Val Loss: 0.2031
+Epoch [96/100], Train Loss: 0.0181, Val Loss: 0.2011
+Epoch [97/100], Train Loss: 0.0182, Val Loss: 0.2010
+Epoch [98/100], Train Loss: 0.0180, Val Loss: 0.2045
+Epoch [99/100], Train Loss: 0.0179, Val Loss: 0.2024
+Epoch [100/100], Train Loss: 0.0179, Val Loss: 0.2029
+Experiment 5 - MSE: 22440.9972, MAE: 102.1963
+数据形状:
+X (输入特征): torch.Size([64, 96, 12])
+y (目标值): torch.Size([64, 240])
+input_cnt (输入序列): torch.Size([64, 96])
+
+Final Results for iTransformer Long Prediction:
+MSE: Mean = 22424.3506, Std = 940.3574
+MAE: Mean = 102.2034, Std = 2.4319
