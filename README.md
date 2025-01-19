@@ -1,6 +1,6 @@
 # 自行车租赁需求预测系统
 
-基于 Transformer 架构的时序预测系统，提供标准 Transformer 和改进的 iTransformer 两种实现，用于预测共享单车的租赁需求。
+基于机器学习的时序预测系统，提供四种实现，用于预测共享单车的租赁需求。
 
 ## 项目结构
 
@@ -29,13 +29,16 @@ ML_Bike_Rental_Forecast/
 ```
 ## 模型架构
 
-### 标准 Transformer (transformer.py)
+### 标准 Transformer
+
 - 基于标准 Transformer 编码器-解码器架构
 - 使用时序注意力机制和位置编码
 - 适用于一般时序预测任务
 
-### 改进版 iTransformer (itransformer.py)
+### 改进版 iTransformer
+
 创新特点：
+
 - 特征维度注意力：将特征作为序列长度维度进行建模
 - 多尺度特征提取：使用不同卷积核大小捕获局部模式
 - 增强型特征交互：通过特征混合层和跳跃连接加强特征间关系
