@@ -6,14 +6,29 @@
 
 ```txt
 ML_Bike_Rental_Forecast/
-├── baseline/                # 标准 Transformer 实现
-│   ├── models/
-│   │   └── transformer.py  # 标准 Transformer 模型
-│   └── utils/
-│       └── __init__.py
-├── improved/               # 改进版实现
+├── Attention-CNN-LSTMModel/
+│   ├── Attention-CNN-LSTM/
+│   │   ├── img/
+│   │   ├── long_model/
+│   │   ├── short_model/
+│   │   ├── atten_long.ipynb
+│   │   ├── atten_short.ipynb
+│   │   ├── dataset/
+├── checkpoints/
+├── Improved-iTransformer/  # 改进版实现
 │   ├── models/
 │   │   └── itransformer.py # iTransformer 模型
+│   └── utils/
+│       └── __init__.py
+├── LSTMModel/
+│   ├── img/
+│   ├── long_model/
+│   ├── short_model/
+│   ├── lstm_long.ipynb
+│   ├── lstm_short.ipynb
+├── TransformerModel/       # 标准 Transformer 实现
+│   ├── models/
+│   │   └── transformer.py  # 标准 Transformer 模型
 │   └── utils/
 │       └── __init__.py
 ├── data/                   # 数据目录
@@ -27,6 +42,7 @@ ML_Bike_Rental_Forecast/
 │   └── checkpoints/       # 训练检查点
 └── README.md
 ```
+
 ## 模型架构
 
 ### 标准 Transformer
